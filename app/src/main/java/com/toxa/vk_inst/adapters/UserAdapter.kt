@@ -23,7 +23,7 @@ class UserAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         filter(query = "")
     }
 
-    private fun filter(query: String) {
+    fun filter(query: String) {
         mUserList.clear()
         mSourceList.forEach {
             if (it.name.contains(query, ignoreCase = true) || it.Surname.contains(query, ignoreCase = true)){
