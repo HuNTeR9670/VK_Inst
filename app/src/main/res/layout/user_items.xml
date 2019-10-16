@@ -12,7 +12,8 @@
             android:id="@+id/user_civ_avatar"
             android:layout_width="@dimen/avatar_size"
             android:layout_height="@dimen/avatar_size"
-            android:layout_margin="16dp" />
+            android:layout_margin="16dp"
+            android:src="@mipmap/ic_launcher" />
 
         <LinearLayout
             android:layout_width="0dp"
