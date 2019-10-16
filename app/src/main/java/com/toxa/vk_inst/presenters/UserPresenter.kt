@@ -12,7 +12,7 @@ class UserPresenter: MvpPresenter<UserView>(){
 
         fun  loadUser(){
             viewState.startLoading()
-            UserProviders(presenter = this).testLoadUsers(hasUsers = true)
+            UserProviders(presenter = this).loadUser()
         }
 
         fun loadedUser(userList: ArrayList<UserModel>){

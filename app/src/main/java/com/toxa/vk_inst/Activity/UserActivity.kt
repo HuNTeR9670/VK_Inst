@@ -62,7 +62,6 @@ class UserActivity : MvpAppCompatActivity(), UserView {
         Seach_Edit.visibility = View.VISIBLE
         User_List.visibility = View.VISIBLE
         user_progress_bar.visibility = View.GONE
-
         mAdapter.setupUser(userList = userList)
     }
 

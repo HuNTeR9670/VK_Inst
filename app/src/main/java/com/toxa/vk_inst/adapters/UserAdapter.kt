@@ -26,7 +26,7 @@ class UserAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(){
     fun filter(query: String) {
         mUserList.clear()
         mSourceList.forEach {
-            if (it.name.contains(query, ignoreCase = true) || it.Surname.contains(query, ignoreCase = true)){
+            if (it.firstName.contains(query, ignoreCase = true) || it.lastName.contains(query, ignoreCase = true)){
                 mUserList.add(it)
             }
             }
@@ -60,11 +60,14 @@ class UserAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
         @SuppressLint("SetTextI18n")
         fun bind (userModel: UserModel){
-            Picasso.get().load(userModel.avatar).into(mCivAvatar)
-            mTxtUsername.text ="${userModel.name}${userModel.Surname}"
-            mTxtCounter.text = userModel.photo_count.toString()
+            if (userModel.photo == ""){
+            }else{
+                Picasso.get().load(userModel.photo).into(mCivAvatar)
+            }
+            mTxtUsername.text ="${userModel.firstName} ${userModel.lastName}"
+            //mTxtCounter.text = userModel.photo_count.toString()
 
-            if (userModel.is_Online){
+            if (userModel.deactivated){
                 mImgOnline.visibility = View.VISIBLE
             }else{
                 mImgOnline.visibility = View.GONE

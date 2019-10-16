@@ -21,6 +21,7 @@ class LoginPresenter : MvpPresenter<LoginView>(){
                     viewState.showUser()
                 }
                 override fun onLoginFailed(errorCode: Int) {
+                    viewState.showEror(eror = "Ошибка входа!")
                 }
             })) {
             return true

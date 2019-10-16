@@ -32,7 +32,7 @@ class LoginActivity : MvpAppCompatActivity(), LoginView {
 
 
             Login_button.setOnClickListener {
-                VK.login(this@LoginActivity, listOf(VKScope.FRIENDS))
+                VK.login(this@LoginActivity, listOf(VKScope.FRIENDS, VKScope.PHOTOS))
        }
     }
 
