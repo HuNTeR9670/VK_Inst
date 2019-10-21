@@ -3,5 +3,7 @@
     <string name="Login">Войти</string>
     <string name="Hello">Вас приветсвует программа Instagram для VK нажмите кнопку \"Войти\" для продолжения…</string>
     <string name="search_hint">Введите запрос</string>
+    <string name="photo_name">Имя, Фамилия</string>
+    <string name="photo_count">Количество фотографий</string>
     <integer name="com_vk_sdk_AppId">7172641</integer>
 </resources>

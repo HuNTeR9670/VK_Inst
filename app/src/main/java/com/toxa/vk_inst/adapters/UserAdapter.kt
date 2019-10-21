@@ -1,21 +1,31 @@
 package com.toxa.vk_inst.adapters
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import com.toxa.vk_inst.Activity.UserPhotoActivity
 import com.toxa.vk_inst.R
 import com.toxa.vk_inst.models.UserModel
+import com.toxa.vk_inst.presenters.UserPhotoPresenter
+import com.toxa.vk_inst.presenters.UserPresenter
+import com.toxa.vk_inst.providers.UserProviders
 import de.hdodenhof.circleimageview.CircleImageView
+import kotlinx.android.synthetic.main.user_items.view.*
 import java.util.Locale.filter
 
 class UserAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     private var mSourceList: ArrayList<UserModel> = ArrayList()
     private var mUserList: ArrayList<UserModel> = ArrayList()
+
+    private var context: Context? = null
 
     fun setupUser(userList : ArrayList<UserModel>){
         mSourceList.clear()
@@ -47,6 +57,12 @@ class UserAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         if (holder is UserHolder) {
             holder.bind(userModel = mUserList[position])
         }
+        holder.itemView.user_txt_username.setOnClickListener {
+            context = it.context
+            val intent = Intent(context, UserPhotoActivity::class.java)
+            intent.putExtra("user_id", mUserList[position].id)
+            it.context.startActivity(intent)
+        }
     }
 
 
@@ -67,7 +83,7 @@ class UserAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(){
             mTxtUsername.text ="${userModel.firstName} ${userModel.lastName}"
             //mTxtCounter.text = userModel.photo_count.toString()
 
-            if (userModel.deactivated){
+            if (userModel.is_Online==1){
                 mImgOnline.visibility = View.VISIBLE
             }else{
                 mImgOnline.visibility = View.GONE
