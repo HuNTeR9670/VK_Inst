@@ -26,12 +26,12 @@ class UserPhotoActivity : MvpAppCompatActivity(), PhotoView  {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_user_photo)
         userPhotoPresenter.loadUserInfo(intent.getIntExtra("user_id",0))
         userPhotoPresenter.loadUserPhoto(intent.getIntExtra("user_id",0))
         mAdapter = UserPhotoAdapter()
         photo_list.adapter = mAdapter
         photo_list.layoutManager = GridLayoutManager(this,3)
-        setContentView(R.layout.activity_user_photo)
     }
 
 

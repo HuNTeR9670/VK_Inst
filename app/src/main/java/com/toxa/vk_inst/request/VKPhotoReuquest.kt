@@ -17,7 +17,7 @@ class VKPhotoReuquest(uid: Int = 141527035): VKRequest<ArrayList<PhotoModel>>("p
         try {
             for (i in 0 until users.length()) {
                 val item = users.getJSONObject(i)
-                val photo = item.getJSONArray("sizes").getJSONObject(1)
+                val photo = item.getJSONArray("sizes").getJSONObject(3)
                 result.add(PhotoModel.parse(photo))
             }
         }catch (e: JSONException) {

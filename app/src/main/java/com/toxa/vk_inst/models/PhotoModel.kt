@@ -27,7 +27,7 @@ data class PhotoModel(
         }
 
     fun parse(json: JSONObject)
-            = PhotoModel (Photo_URL = json.optString("src",""))
+            = PhotoModel (Photo_URL = json.optString("url",""))
 
 }
 }

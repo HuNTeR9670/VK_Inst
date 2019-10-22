@@ -20,7 +20,7 @@ class UserPhotoPresenter : MvpPresenter<PhotoView>() {
             if (userModel.size == 0){
                 viewState.showEror("PPc0")
             }else{
-                viewState.setupPhotoList("${userModel[0].firstName} ${userModel[0].lastName}",userModel[0].photo)
+                viewState.setupUserInfo("${userModel[0].firstName} ${userModel[0].lastName}",userModel[0].photo)
             }
         }
 
@@ -34,7 +34,7 @@ class UserPhotoPresenter : MvpPresenter<PhotoView>() {
         if (photoModel.size == 0){
             viewState.showEror("PPc0")
         }else{
-            viewState.setupPhotoList("",photoModel[0].Photo_URL)
+            viewState.setupPhotoList(photoModel)
         }
     }
 
