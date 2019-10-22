@@ -1,6 +1,5 @@
 package com.toxa.vk_inst.Activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Adapter
@@ -11,6 +10,7 @@ import androidx.recyclerview.widget.OrientationHelper
 import com.squareup.picasso.Picasso
 import com.toxa.vk_inst.R
 import com.toxa.vk_inst.adapters.UserPhotoAdapter
+import com.toxa.vk_inst.models.PhotoModel
 import com.toxa.vk_inst.presenters.UserPhotoPresenter
 import com.toxa.vk_inst.views.PhotoView
 import kotlinx.android.synthetic.main.activity_user_photo.*
@@ -27,6 +27,7 @@ class UserPhotoActivity : MvpAppCompatActivity(), PhotoView  {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         userPhotoPresenter.loadUserInfo(intent.getIntExtra("user_id",0))
+        userPhotoPresenter.loadUserPhoto(intent.getIntExtra("user_id",0))
         mAdapter = UserPhotoAdapter()
         photo_list.adapter = mAdapter
         photo_list.layoutManager = GridLayoutManager(this,3)
@@ -34,10 +35,15 @@ class UserPhotoActivity : MvpAppCompatActivity(), PhotoView  {
     }
 
 
-    override fun setupPhotoList(User: String, URL: String?) {
+    override fun setupUserInfo(User: String, URL: String?) {
         photo_name.text = User
         Picasso.get().load(URL).into(photo_avatar)
         UserPhoto_progress.visibility = View.GONE
+    }
+
+    override fun setupPhotoList(photoModel: ArrayList<PhotoModel>) {
+        UserPhoto_progress.visibility = View.GONE
+        mAdapter.setupPhotoList(photoModel = photoModel)
     }
 
     override fun startLoad() {

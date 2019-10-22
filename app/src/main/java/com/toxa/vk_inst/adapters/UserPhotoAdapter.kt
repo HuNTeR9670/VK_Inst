@@ -7,16 +7,22 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.toxa.vk_inst.R
-import com.toxa.vk_inst.models.UserModel
+import com.toxa.vk_inst.models.PhotoModel
 
 class UserPhotoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
-    private var mPhotoList: ArrayList<UserModel> = ArrayList()
+    private var mPhotoList: ArrayList<PhotoModel> = ArrayList()
+
+    fun setupPhotoList(photoModel: ArrayList<PhotoModel>){
+        mPhotoList.clear()
+        mPhotoList.addAll(photoModel)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val itemView = layoutInflater.inflate(R.layout.photo_items, parent, false)
-        return UserAdapter.UserHolder(itemView = itemView)
+        return PhotoHolder(itemView = itemView)
     }
 
     override fun getItemCount(): Int {
@@ -25,7 +31,7 @@ class UserPhotoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is PhotoHolder){
-            holder.bind(userModel = mPhotoList[position])
+            holder.bind(photoModel = mPhotoList[position])
         }
     }
 
@@ -33,9 +39,9 @@ class UserPhotoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
         private var mPhoto : ImageView = itemView.findViewById(R.id.Photo_Users)
 
-        fun bind (userModel: UserModel){
-            if (userModel.photo == ""){}else{
-                Picasso.get().load(userModel.photo).into(mPhoto)
+        fun bind (photoModel: PhotoModel){
+            if (photoModel.Photo_URL == ""){}else{
+                Picasso.get().load(photoModel.Photo_URL).into(mPhoto)
             }
         }
     }

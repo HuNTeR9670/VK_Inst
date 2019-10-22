@@ -5,7 +5,7 @@ import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy
 import moxy.viewstate.strategy.StateStrategyType
 
-@StateStrategyType (AddToEndSingleStrategy::class)
+@StateStrategyType (value = AddToEndSingleStrategy::class)
 interface UserView:MvpView{
     fun setupEmptyList()
     fun setupUserList(userList: ArrayList<UserModel>)

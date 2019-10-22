@@ -1,13 +1,15 @@
 package com.toxa.vk_inst.views
 
+import com.toxa.vk_inst.models.PhotoModel
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy
 import moxy.viewstate.strategy.StateStrategyType
 
 
-@StateStrategyType (AddToEndSingleStrategy::class)
+@StateStrategyType (value = AddToEndSingleStrategy::class)
 interface PhotoView: MvpView{
-    fun setupPhotoList(User : String, URL : String?)
+    fun setupUserInfo(User : String, URL : String?)
+    fun setupPhotoList (photoModel: ArrayList<PhotoModel>)
     fun startLoad()
     fun endLoad()
     fun showEror(error: String)
