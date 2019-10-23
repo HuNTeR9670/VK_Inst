@@ -10,8 +10,8 @@ class VKUserRequerst(uids: Int = 0) : VKRequest<ArrayList<UserModel>>("users.get
     init {
         if (uids!= 0) {
             addParam("user_ids", uids)
+            addParam("fields", "photo_200")
         }
-        addParam("fields", "photo_200")
     }
 
     override fun parse(r: JSONObject): ArrayList<UserModel> {

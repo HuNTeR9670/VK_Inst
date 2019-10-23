@@ -76,8 +76,12 @@ class UserAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
         @SuppressLint("SetTextI18n")
         fun bind (userModel: UserModel){
-            if (userModel.photo == ""){
-            }else{
+            if (userModel.photo == "")
+            {
+                Picasso.get().load(R.drawable.profile).into(mCivAvatar)
+            }
+            else
+            {
                 Picasso.get().load(userModel.photo).into(mCivAvatar)
             }
             mTxtUsername.text ="${userModel.firstName} ${userModel.lastName}"

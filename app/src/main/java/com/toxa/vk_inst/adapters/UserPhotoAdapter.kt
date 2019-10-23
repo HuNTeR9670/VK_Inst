@@ -53,7 +53,12 @@ class UserPhotoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         private var mPhoto : ImageView = itemView.findViewById(R.id.Photo_Users)
 
         fun bind (photoModel: PhotoModel){
-            if (photoModel.Photo_URL == ""){}else{
+            if (photoModel.Photo_URL == "")
+            {
+                Picasso.get().load(R.drawable.profile).into(mPhoto)
+            }
+            else
+            {
                 Picasso.get().load(photoModel.Photo_URL)
                     .resize(800,600)
                     .centerCrop()

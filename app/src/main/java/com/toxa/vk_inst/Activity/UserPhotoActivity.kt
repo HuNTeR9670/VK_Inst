@@ -47,7 +47,14 @@ class UserPhotoActivity : MvpAppCompatActivity(), PhotoView  {
 
     override fun setupUserInfo(User: String, URL: String?) {
         photo_name.text = User
+        if (URL!!.isEmpty())
+        {
+            Picasso.get().load(R.drawable.profile).into(photo_avatar)
+        }
+        else
+        {
         Picasso.get().load(URL).into(photo_avatar)
+        }
         UserPhoto_progress.visibility = View.GONE
     }
 
