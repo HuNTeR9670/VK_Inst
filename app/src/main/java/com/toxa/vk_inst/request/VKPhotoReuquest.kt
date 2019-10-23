@@ -9,6 +9,7 @@ import org.json.JSONObject
 class VKPhotoReuquest(uid: Int = 0): VKRequest<ArrayList<PhotoModel>>("photos.getAll") {
     init {
          addParam("owner_id", uid)
+         addParam("count",200)
     }
 
     override fun parse(r: JSONObject): ArrayList<PhotoModel> {
