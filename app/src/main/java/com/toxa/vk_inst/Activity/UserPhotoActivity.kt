@@ -1,6 +1,7 @@
 package com.toxa.vk_inst.Activity
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.Adapter
 import android.widget.GridLayout
@@ -32,6 +33,15 @@ class UserPhotoActivity : MvpAppCompatActivity(), PhotoView  {
         mAdapter = UserPhotoAdapter()
         photo_list.adapter = mAdapter
         photo_list.layoutManager = GridLayoutManager(this,3)
+
+        val actionBar = supportActionBar // добавляем кнопку "Назад"
+        actionBar!!.setHomeButtonEnabled(true)
+        actionBar.setDisplayHomeAsUpEnabled(true)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean { // обработка нажатия кнопки "Назад"
+        this.finish() // завершаем текущее активити
+        return true
     }
 
 

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,6 +35,10 @@ class UserActivity : MvpAppCompatActivity(), UserView {
         User_List.layoutManager = LinearLayoutManager(applicationContext, OrientationHelper.VERTICAL,false)
         User_List.setHasFixedSize(true)
 
+        val actionBar = supportActionBar // добавляем кнопку "Назад"
+        actionBar!!.setHomeButtonEnabled(true)
+        actionBar.setDisplayHomeAsUpEnabled(true)
+
         Seach_Edit.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable?) {
 
@@ -49,6 +54,10 @@ class UserActivity : MvpAppCompatActivity(), UserView {
 
 
         })
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean { // обработка нажатия кнопки "Назад"
+        this.finish() // завершаем текущее активити
+        return true
     }
 
 

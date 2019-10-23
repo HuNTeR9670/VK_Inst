@@ -3,7 +3,6 @@ package com.toxa.vk_inst.Activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.toxa.vk_inst.R
@@ -11,8 +10,6 @@ import com.toxa.vk_inst.presenters.LoginPresenter
 import com.toxa.vk_inst.views.LoginView
 import com.vk.api.sdk.VK
 import com.vk.api.sdk.auth.VKScope
-import com.vk.api.sdk.utils.VKUtils
-import com.vk.api.sdk.utils.VKUtils.getCertificateFingerprint
 import kotlinx.android.synthetic.main.activity_login.*
 import moxy.MvpAppCompatActivity
 import moxy.presenter.InjectPresenter
@@ -21,6 +18,8 @@ import moxy.presenter.InjectPresenter
 class LoginActivity : MvpAppCompatActivity(), LoginView {
 
     val TAG = LoginActivity::class.simpleName
+
+    private var back_pressed: Long = 0
 
     @InjectPresenter
     lateinit var loginPresenter: LoginPresenter
@@ -34,6 +33,15 @@ class LoginActivity : MvpAppCompatActivity(), LoginView {
             Login_button.setOnClickListener {
                 VK.login(this@LoginActivity, listOf(VKScope.FRIENDS, VKScope.PHOTOS))
        }
+    }
+
+
+    override fun onBackPressed() {
+        if (back_pressed + 2000 > System.currentTimeMillis()) super.onBackPressed() else Toast.makeText(
+            baseContext, "Press once again to exit!",
+            Toast.LENGTH_SHORT
+        ).show()
+        back_pressed = System.currentTimeMillis()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

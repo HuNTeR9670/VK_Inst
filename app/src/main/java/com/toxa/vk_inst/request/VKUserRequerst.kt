@@ -6,7 +6,7 @@ import com.vk.api.sdk.requests.VKRequest
 import org.json.JSONObject
 import java.util.ArrayList
 
-class VKUserRequerst(uids: Int = 55671830) : VKRequest<ArrayList<UserModel>>("users.get") {
+class VKUserRequerst(uids: Int = 0) : VKRequest<ArrayList<UserModel>>("users.get") {
     init {
         if (uids!= 0) {
             addParam("user_ids", uids)

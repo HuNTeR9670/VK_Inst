@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Activity.UserPhotoActivity"></activity>
+        <activity android:name=".helpers.FullScreenPhoto"></activity>
+        <activity android:name=".Activity.UserPhotoActivity" />
         <activity android:name=".Activity.UserActivity" />
         <activity android:name=".Activity.LoginActivity">
             <intent-filter>
