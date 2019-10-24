@@ -8,7 +8,7 @@ import moxy.viewstate.strategy.StateStrategyType
 
 @StateStrategyType (value = AddToEndSingleStrategy::class)
 interface PhotoView: MvpView{
-    fun setupUserInfo(User : String, URL : String?)
+    fun setupUserInfo(User : String, URL : String?, isOnline : Int)
     fun setupPhotoList (photoModel: ArrayList<PhotoModel>)
     fun startLoad()
     fun endLoad()

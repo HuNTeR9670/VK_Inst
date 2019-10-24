@@ -37,6 +37,19 @@
         app:layout_constraintVertical_bias="0.355"
         tools:ignore="MissingConstraints" />
 
+
+    <TextView
+        android:id="@+id/isOnline_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/isOnline"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.197"
+        app:layout_constraintStart_toEndOf="@+id/photo_avatar"
+        app:layout_constraintTop_toBottomOf="@+id/photo_name"
+        app:layout_constraintVertical_bias="0.309" />
+
     <ProgressBar
         android:id="@+id/UserPhoto_progress"
         android:layout_width="wrap_content"
@@ -59,8 +72,10 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/photo_list"
             android:layout_width="match_parent"
+            android:layout_margin="10dp"
             android:layout_height="match_parent"
             tools:listitem="@layout/photo_items" />
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -45,8 +45,17 @@ class UserPhotoActivity : MvpAppCompatActivity(), PhotoView  {
     }
 
 
-    override fun setupUserInfo(User: String, URL: String?) {
+    override fun setupUserInfo(User: String, URL: String?, isOnline: Int) {
         photo_name.text = User
+
+        if (isOnline == 1)
+        {
+            isOnline_textView.visibility = View.VISIBLE
+        }else
+        {
+            isOnline_textView.visibility = View.GONE
+        }
+
         if (URL!!.isEmpty())
         {
             Picasso.get().load(R.drawable.profile).into(photo_avatar)

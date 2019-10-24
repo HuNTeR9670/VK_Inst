@@ -20,7 +20,8 @@ class UserPhotoPresenter : MvpPresenter<PhotoView>() {
             if (userModel.size == 0){
                 viewState.showEror("PPc0")
             }else{
-                viewState.setupUserInfo("${userModel[0].firstName} ${userModel[0].lastName}",userModel[0].photo)
+                viewState.setupUserInfo("${userModel[0].firstName} ${userModel[0].lastName}",userModel[0].photo,
+                    userModel[0].is_Online)
             }
         }
 

@@ -31,7 +31,15 @@ class LoginActivity : MvpAppCompatActivity(), LoginView {
 
 
             Login_button.setOnClickListener {
-                VK.login(this@LoginActivity, listOf(VKScope.FRIENDS, VKScope.PHOTOS))
+                if (VK.isLoggedIn()){
+                    startActivity(Intent(applicationContext, UserActivity::class.java))
+                    finish()
+                }
+
+                else {
+                    VK.login(this@LoginActivity, listOf(VKScope.FRIENDS, VKScope.PHOTOS))
+                }
+
        }
     }
 

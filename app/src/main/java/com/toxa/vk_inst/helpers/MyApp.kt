@@ -1,6 +1,7 @@
 package com.toxa.vk_inst.helpers
 
 import android.app.Application
+import com.toxa.vk_inst.Activity.LoginActivity
 import com.vk.api.sdk.VK
 import com.vk.api.sdk.VKTokenExpiredHandler
 

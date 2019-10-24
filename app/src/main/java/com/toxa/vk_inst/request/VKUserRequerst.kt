@@ -9,10 +9,10 @@ import java.util.ArrayList
 class VKUserRequerst(uids: Int = 0) : VKRequest<ArrayList<UserModel>>("users.get") {
     init {
         if (uids!= 0) {
-            addParam("lang","ru")
             addParam("user_ids", uids)
-            addParam("fields", "photo_200")
         }
+        addParam("fields", "online")
+        addParam("fields", "photo_200")
     }
 
     override fun parse(r: JSONObject): ArrayList<UserModel> {
