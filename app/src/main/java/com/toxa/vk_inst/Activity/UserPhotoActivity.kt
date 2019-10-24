@@ -1,6 +1,7 @@
 package com.toxa.vk_inst.Activity
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.MenuItem
 import android.view.View
 import android.widget.Adapter
@@ -47,7 +48,6 @@ class UserPhotoActivity : MvpAppCompatActivity(), PhotoView  {
 
     override fun setupUserInfo(User: String, URL: String?, isOnline: Int) {
         photo_name.text = User
-
         if (isOnline == 1)
         {
             isOnline_textView.visibility = View.VISIBLE
@@ -58,17 +58,16 @@ class UserPhotoActivity : MvpAppCompatActivity(), PhotoView  {
 
         if (URL!!.isEmpty())
         {
-            Picasso.get().load(R.drawable.profile).into(photo_avatar)
+            Picasso.get().load(R.drawable.no_photo).into(photo_avatar)
         }
         else
         {
         Picasso.get().load(URL).into(photo_avatar)
         }
-        UserPhoto_progress.visibility = View.GONE
     }
 
     override fun setupPhotoList(photoModel: ArrayList<PhotoModel>) {
-        UserPhoto_progress.visibility = View.GONE
+        Handler().postDelayed({UserPhoto_progress.visibility = View.GONE},2000)
         mAdapter.setupPhotoList(photoModel = photoModel)
     }
 
@@ -77,7 +76,7 @@ class UserPhotoActivity : MvpAppCompatActivity(), PhotoView  {
     }
 
     override fun endLoad() {
-        UserPhoto_progress.visibility = View.GONE
+        Handler().postDelayed({UserPhoto_progress.visibility = View.GONE},2000)
     }
 
     override fun showEror(error: String) {

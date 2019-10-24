@@ -53,9 +53,9 @@ class UserPhotoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         private var mPhoto : ImageView = itemView.findViewById(R.id.Photo_Users)
 
         fun bind (photoModel: PhotoModel){
-            if (photoModel.Photo_URL == "")
+            if (photoModel.Photo_URL!!.isEmpty())
             {
-                Picasso.get().load(R.drawable.profile).into(mPhoto)
+                Picasso.get().load(R.drawable.no_photo).into(mPhoto)
             }
             else
             {

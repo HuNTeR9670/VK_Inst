@@ -16,13 +16,13 @@ class UserPhotoPresenter : MvpPresenter<PhotoView>() {
         }
 
         fun  setupUserInfo (userModel: ArrayList<UserModel>){
-            viewState.endLoad()
             if (userModel.size == 0){
                 viewState.showEror("PPc0")
             }else{
                 viewState.setupUserInfo("${userModel[0].firstName} ${userModel[0].lastName}",userModel[0].photo,
                     userModel[0].is_Online)
             }
+            viewState.endLoad()
         }
 
     fun loadUserPhoto (id: Int){
@@ -33,7 +33,7 @@ class UserPhotoPresenter : MvpPresenter<PhotoView>() {
     fun  setupUserPhoto (photoModel: ArrayList<PhotoModel>){
         viewState.endLoad()
         if (photoModel.size == 0){
-            viewState.showEror("PPc0")
+            viewState.showEror("Пользователь не имеет фотографий либо загрузил их очень давно :(")
         }else{
             viewState.setupPhotoList(photoModel)
         }
